@@ -1,6 +1,6 @@
-import 'package:bookly/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:bookly/features/home/presentation/views/widgets/home_view_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
             } else if (state is FeaturedBooksFailure) {
               return Center(child: Text(state.errMessage));
             } else {
-              return const Center(child: CustomLoadingIndicator());
+              return const HomeViewLoadingWidget();
             }
           },
         ),

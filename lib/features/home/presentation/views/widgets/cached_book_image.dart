@@ -1,6 +1,6 @@
-import 'package:bookly/core/widgets/custom_loading_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CachedBookImage extends StatelessWidget {
   const CachedBookImage({super.key, required this.imageUrl});
@@ -15,10 +15,14 @@ class CachedBookImage extends StatelessWidget {
         child: CachedNetworkImage(
           fit: BoxFit.fill,
           imageUrl: imageUrl,
-          placeholder:
-              (context, url) => const Center(child: CustomLoadingIndicator()),
-          errorWidget:
-              (context, url, error) => const Icon(Icons.error, size: 64),
+          placeholder: (context, url) => Shimmer.fromColors(
+            baseColor: Colors.grey[800]!,
+            highlightColor: Colors.grey[700]!,
+            child: Container(
+              color: Colors.white,
+            ),
+          ),
+          errorWidget: (context, url, error) => const Icon(Icons.error, size: 64),
         ),
       ),
     );

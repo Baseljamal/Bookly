@@ -1,7 +1,7 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/core/widgets/custom_error_widget.dart';
-import 'package:bookly/core/widgets/custom_loading_indicator.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_list_view_item.dart';
+import 'package:bookly/features/home/presentation/views/widgets/newest_books_list_view_loading_widget.dart';
 import 'package:bookly/features/search/presentation/manager/search_result_cubit/search_result_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +29,7 @@ class SearchResultListView extends StatelessWidget {
           );
         } else if (state is SearchResultLoading) {
           return const SliverToBoxAdapter(
-            child: Center(child: CustomLoadingIndicator()),
+            child: NewestBooksListViewLoadingWidget(),
           );
         } else {
           return const SliverFillRemaining(
@@ -45,16 +45,3 @@ class SearchResultListView extends StatelessWidget {
     );
   }
 }
-
-
-// return ListView.builder(
-    //   padding: EdgeInsets.zero,
-    //   itemCount: 10,
-    //   itemBuilder: (context, index) {
-    //     return const Padding(
-    //       padding: EdgeInsets.symmetric(vertical: 10),
-    //       // child: BookListViewItem(),
-    //       child: Text('data'),
-    //     );
-    //   },
-    // );
